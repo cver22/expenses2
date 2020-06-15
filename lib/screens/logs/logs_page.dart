@@ -1,7 +1,5 @@
 import 'package:expenses/blocs/entries_bloc/entries_bloc.dart';
 import 'package:expenses/blocs/logs_bloc/bloc.dart';
-import 'package:expenses/blocs/my_entry/bloc.dart';
-import 'package:expenses/models/entry/my_entry.dart';
 import 'package:expenses/models/log/log.dart';
 import 'package:expenses/screens/common_widgets/empty_content.dart';
 import 'package:expenses/screens/entries/add_edit_entries_page.dart';
@@ -9,7 +7,6 @@ import 'package:expenses/screens/logs/add_edit_log_page.dart';
 import 'package:expenses/screens/logs/log_list_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
 
 class LogsPage extends StatelessWidget {
   //TODO LogsBloc _logsBloc; and how to dispose
@@ -60,9 +57,9 @@ class LogsPage extends StatelessWidget {
                                       BlocProvider.value(
                                           value: BlocProvider.of<LogsBloc>(
                                               context)),
-                                      BlocProvider<MyEntryBloc>(
-                                          create: (context) => MyEntryBloc()),
+
                                     ],
+                                    child: AddEditEntriesPage(log: _log),
                                   );
 
                                   /*BlocProvider.value(
@@ -70,7 +67,7 @@ class LogsPage extends StatelessWidget {
                                         BlocProvider.of<EntriesBloc>(context),
                                     child: BlocProvider.value(
                                       value: BlocProvider.of<LogsBloc>(context),
-                                      child: AddEditEntriesPage(log: _log),
+                                      child:
                                     ),
                                   );*/
                                 }),

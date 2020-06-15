@@ -1,9 +1,9 @@
 part of 'actions.dart';
 
-class SelectActiveTab implements Action {
+class SetActiveTab implements Action {
   final AppTab activeTab;
 
-  SelectActiveTab({this.activeTab});
+  SetActiveTab({this.activeTab});
 
   @override
   AppState updateState(AppState appState) {
