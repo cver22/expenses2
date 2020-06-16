@@ -1,4 +1,5 @@
-import 'package:expenses/models/user/auth_state.dart';
+
+import 'package:expenses/models/auth/auth_state.dart';
 import 'package:meta/meta.dart';
 
 @immutable
@@ -11,10 +12,10 @@ class AppState {
   });
 
   AppState copyWith({
-    AuthState userState,
+    AuthState authState,
   }) {
     return AppState(
-      authState: userState ?? this.authState,
+      authState: authState ?? this.authState,
     );
   }
 

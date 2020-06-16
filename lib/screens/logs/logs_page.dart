@@ -1,4 +1,5 @@
 
+import 'package:expenses/env.dart';
 import 'package:flutter/material.dart';
 
 
@@ -7,6 +8,6 @@ class LogsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text('This is the Logs Page');
+    return Text(Env.store.state.authState.user.toString());
   }
 }

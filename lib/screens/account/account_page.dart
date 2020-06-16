@@ -1,7 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:expenses/blocs/authentication_bloc/authentication_bloc.dart';
-import 'package:expenses/models/user/user.dart';
-import 'package:expenses/services/user_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:expenses/models/user/user.dart';
+import 'package:expenses/models/auth/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
