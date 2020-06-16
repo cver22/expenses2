@@ -60,9 +60,9 @@ class LogsPage extends StatelessWidget {
                                       BlocProvider.value(
                                           value: BlocProvider.of<LogsBloc>(
                                               context)),
-                                      BlocProvider<MyEntryBloc>(
-                                          create: (context) => MyEntryBloc()),
+
                                     ],
+                                    child: AddEditEntriesPage(log: _log),
                                   );
 
                                   /*BlocProvider.value(
