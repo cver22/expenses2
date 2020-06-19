@@ -22,13 +22,28 @@ class Fetcher {
     final isSignedIn = await _userRepository.isSignedIn();
     if (isSignedIn) {
       final Maybe<User> user = Maybe.some(await _userRepository.getUser());
-      _store.dispatch(
-          UpdateAuthStatus(user: user, authStatus: AuthStatus.authenticated));
+      _store.dispatch(UpdateAuthStatus(
+        user: user,
+        authStatus: AuthStatus.authenticated,
+      ));
+      print('User authenticated: $user');
     } else {
-      _store.dispatch(UpdateAuthStatus(authStatus: AuthStatus.unauthenticated));
+      _store.dispatch(UpdateAuthStatus(
+        authStatus: AuthStatus.unauthenticated,
+      ));
+      print('User is not authenticated');
     }
   }
 
+  //TODO do I need to map alreadyLoggedIn ?
+
+  Future<void> signOut() async {
+    _store.dispatch(UpdateAuthStatus(
+      user: Maybe.none(),
+      authStatus: AuthStatus.unauthenticated,
+    ));
+    await _userRepository.signOut();
+  }
 
 //TODO implement loading of logs and entries from firestore
 

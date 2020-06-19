@@ -1,5 +1,5 @@
-import 'package:expenses/blocs/authentication_bloc/authentication_bloc.dart';
 import 'package:expenses/blocs/register_bloc/bloc.dart';
+import 'package:expenses/env.dart';
 import 'package:expenses/screens/register/register_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -50,8 +50,8 @@ class _RegisterFormState extends State<RegisterForm> {
             );
         }
         if (state.isSuccess) {
-          BlocProvider.of<AuthenticationBloc>(context).add(LoggedIn());
-          Navigator.of(context).pop();
+          Env.fetcher.startApp();
+          Navigator.pop(context);
         }
         if (state.isFailure) {
           Scaffold.of(context)

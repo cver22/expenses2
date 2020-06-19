@@ -91,7 +91,6 @@ class _LoginFormState extends State<LoginForm> {
               }
               if (state.isSuccess) {
                 Env.fetcher.startApp();
-                BlocProvider.of<AuthenticationBloc>(context).add(LoggedIn());
               }
             },
             child: BlocBuilder<LoginBloc, LoginState>(
