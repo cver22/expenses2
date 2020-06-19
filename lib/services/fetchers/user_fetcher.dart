@@ -46,9 +46,9 @@ class UserFetcher {
     await _userRepository.signOut();
   }
 
-  Future<void> signInWithCredentials(String email, String password) async {
+  Future<void> signInWithCredentials({String email, String password}) async {
     _store.dispatch(
-        UpdateLoginState(loginState: LoginState.loginWithCredentialsPressed()));
+        UpdateLoginState(loginState: LoginState.submitting()));
 
     try {
       await _userRepository.signInWithCredentials(email, password);
@@ -61,7 +61,7 @@ class UserFetcher {
 
   Future<void> signInWithGoogle() async {
     _store.dispatch(
-        UpdateLoginState(loginState: LoginState.loginWithGooglePressed()));
+        UpdateLoginState(loginState: LoginState.submitting()));
 
     try {
       await _userRepository.signInWIthGoogle();
