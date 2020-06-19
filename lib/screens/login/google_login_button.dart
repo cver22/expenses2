@@ -1,4 +1,3 @@
-
 import 'package:expenses/blocs/login_bloc/bloc.dart';
 import 'package:expenses/env.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +19,6 @@ class GoogleLoginButton extends StatelessWidget {
       color: Colors.redAccent,
       onPressed: () {
         Env.userFetcher.signInWithGoogle();
-
       },
     );
   }
