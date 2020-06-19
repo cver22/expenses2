@@ -62,7 +62,6 @@ class UserFetcher {
   Future<void> signInWithGoogle() async {
     _store.dispatch(
         UpdateLoginState(loginState: LoginState.submitting()));
-
     try {
       await _userRepository.signInWIthGoogle();
       print('google login ${_userRepository.getUser().toString()}');
