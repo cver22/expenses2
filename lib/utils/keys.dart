@@ -2,7 +2,10 @@ import 'package:flutter/widgets.dart';
 
 //TODO not my keys, need massive editing to use
 
-class ArchSampleKeys {
+class ExpenseKeys {
+  // Main
+  static final main = const Key('__main__');
+
   // Home Screens
   static final homeScreen = const Key('__homeScreen__');
   static final addTodoFab = const Key('__addTodoFab__');

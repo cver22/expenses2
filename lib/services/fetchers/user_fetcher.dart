@@ -1,16 +1,17 @@
 import 'package:expenses/models/auth/auth_status.dart';
-import 'package:expenses/models/auth/user.dart';
+import 'package:expenses/models/login/login_state.dart';
+import 'file:///D:/version-control/flutter/expenses/lib/models/user.dart';
 import 'package:expenses/services/user_repository.dart';
 import 'package:expenses/store/actions/actions.dart';
 import 'package:expenses/store/app_store.dart';
 import 'package:expenses/utils/maybe.dart';
 import 'package:meta/meta.dart';
 
-class Fetcher {
+class UserFetcher {
   final AppStore _store;
   final FirebaseUserRepository _userRepository;
 
-  Fetcher({
+  UserFetcher({
     @required AppStore store,
     @required FirebaseUserRepository userRepository,
   })  : _store = store,
@@ -43,6 +44,33 @@ class Fetcher {
       authStatus: AuthStatus.unauthenticated,
     ));
     await _userRepository.signOut();
+  }
+
+  Future<void> signInWithCredentials(String email, String password) async {
+    _store.dispatch(
+        UpdateLoginState(loginState: LoginState.loginWithCredentialsPressed()));
+
+    try {
+      await _userRepository.signInWithCredentials(email, password);
+      _store.dispatch(UpdateLoginState(loginState: LoginState.success()));
+    } catch (e) {
+      print(e.toString());
+      _store.dispatch(UpdateLoginState(loginState: LoginState.failure()));
+    }
+  }
+
+  Future<void> signInWithGoogle() async {
+    _store.dispatch(
+        UpdateLoginState(loginState: LoginState.loginWithGooglePressed()));
+
+    try {
+      await _userRepository.signInWIthGoogle();
+      print('google login ${_userRepository.getUser().toString()}');
+      _store.dispatch(UpdateLoginState(loginState: LoginState.success()));
+    } catch (e) {
+      print(e.toString());
+      _store.dispatch(UpdateLoginState(loginState: LoginState.failure()));
+    }
   }
 
 //TODO implement loading of logs and entries from firestore

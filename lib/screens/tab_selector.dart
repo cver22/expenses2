@@ -1,6 +1,5 @@
 import 'package:expenses/models/app_tab.dart';
 import 'package:expenses/utils/keys.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +16,7 @@ class TabSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      key: ArchSampleKeys.tabs,
+      key: ExpenseKeys.tabs,
       currentIndex: AppTab.values.indexOf(activeTab),
       onTap: (index) => onTabSelected(AppTab.values[index]),
       items: AppTab.values.map((tab) {
@@ -25,8 +24,8 @@ class TabSelector extends StatelessWidget {
           icon: Icon(
             tab == AppTab.logs ? Icons.list : Icons.show_chart,
             key: tab == AppTab.logs
-                ? ArchSampleKeys.logsTab
-                : ArchSampleKeys.entriesTab,
+                ? ExpenseKeys.logsTab
+                : ExpenseKeys.entriesTab,
           ),
           title: Text(tab == AppTab.entries
               ? 'Entries'

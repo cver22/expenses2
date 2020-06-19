@@ -1,5 +1,5 @@
 import 'package:expenses/env.dart';
-import 'package:expenses/models/auth/user.dart';
+import 'file:///D:/version-control/flutter/expenses/lib/models/user.dart';
 import 'package:flutter/material.dart';
 
 class AccountPage extends StatelessWidget {
@@ -46,7 +46,7 @@ class AccountPage extends StatelessWidget {
             FlatButton(
               child: Text('Logout'),
               onPressed: () {
-                Env.fetcher.signOut();
+                Env.userFetcher.signOut();
                 Navigator.pop(context);
               },
             )

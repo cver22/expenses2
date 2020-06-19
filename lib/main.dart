@@ -1,10 +1,10 @@
-import 'package:expenses/blocs/authentication_bloc/authentication_bloc.dart';
 import 'package:expenses/models/auth/auth_state.dart';
 import 'package:expenses/models/auth/auth_status.dart';
 import 'package:expenses/screens/home_screen.dart';
 import 'package:expenses/screens/login/login_screen.dart';
 import 'package:expenses/screens/splash_screen.dart';
 import 'package:expenses/store/connect_state.dart';
+import 'package:expenses/utils/keys.dart';
 import 'package:expenses/utils/simple_bloc_delegate.dart';
 import 'package:expenses/utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -20,11 +20,12 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      key: ExpenseKeys.main,
       home: ConnectState<AuthState>(
           map: (state) => state.authState,
           where: notIdentical,
           builder: (authState) {
-            print('Rendering Main Screen)');
+            print('Rendering Main Screen');
 
             if (authState.authStatus == AuthStatus.authenticated) {
               return HomeScreen();

@@ -14,7 +14,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         _userRepository = userRepository;
 
   @override
-  LoginState get initialState => LoginState.empty();
+  LoginState get initialState => LoginState.initial();
 
 
   // gives user time before we start validating the inputs

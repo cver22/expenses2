@@ -50,7 +50,7 @@ class _RegisterFormState extends State<RegisterForm> {
             );
         }
         if (state.isSuccess) {
-          Env.fetcher.startApp();
+          Env.userFetcher.startApp();
           Navigator.pop(context);
         }
         if (state.isFailure) {

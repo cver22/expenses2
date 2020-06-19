@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:expenses/models/auth/user.dart';
+import 'file:///D:/version-control/flutter/expenses/lib/models/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -46,8 +46,12 @@ class FirebaseUserRepository implements UserRepository {
 
   @override
   Future<void> signUp({String email, String password}) async {
-    return await _firebaseAuth.createUserWithEmailAndPassword(
+
+    var auth = await _firebaseAuth.createUserWithEmailAndPassword(
         email: email, password: password);
+    auth.toString();
+
+    return auth;
   }
 
   @override

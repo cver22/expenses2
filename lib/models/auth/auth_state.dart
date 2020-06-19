@@ -1,5 +1,5 @@
 import 'package:expenses/models/auth/auth_status.dart';
-import 'package:expenses/models/auth/user.dart';
+import 'file:///D:/version-control/flutter/expenses/lib/models/user.dart';
 import 'package:expenses/utils/maybe.dart';
 import 'package:meta/meta.dart';
 

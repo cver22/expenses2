@@ -2,12 +2,15 @@
 
 import 'package:expenses/models/app_state.dart';
 import 'package:expenses/models/auth/auth_status.dart';
-import 'package:expenses/models/auth/user.dart';
+import 'package:expenses/models/login/login_state.dart';
+import 'file:///D:/version-control/flutter/expenses/lib/models/user.dart';
 import 'package:expenses/utils/maybe.dart';
+import 'package:expenses/utils/validators.dart';
 
 
 
-part 'user_actions.dart';
+part 'auth_actions.dart';
+part 'login_actions.dart';
 
 abstract class Action {
   AppState updateState(AppState appState);
