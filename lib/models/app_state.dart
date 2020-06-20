@@ -1,33 +1,35 @@
 
 import 'package:expenses/models/auth/auth_state.dart';
-import 'package:expenses/models/login/login_state.dart';
+import 'package:expenses/models/login/login__regstate.dart';
+import 'package:expenses/models/register/register_state.dart';
 import 'package:meta/meta.dart';
 
 @immutable
 class AppState {
   final AuthState authState;
-  final LoginState loginState;
+  final LoginRegState loginRegState;
+
 
 
   AppState({
     @required this.authState,
-    @required this.loginState,
+    @required this.loginRegState,
   });
 
   AppState copyWith({
     AuthState authState,
-    LoginState loginState,
+    LoginRegState loginState,
   }) {
     return AppState(
       authState: authState ?? this.authState,
-      loginState: loginState ?? this.loginState,
+      loginRegState: loginState ?? this.loginRegState,
     );
   }
 
   factory AppState.initial() {
     return AppState(
       authState: AuthState.initial(),
-      loginState: LoginState.initial(),
+      loginRegState: LoginRegState.initial(),
     );
   }
 }

@@ -8,7 +8,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 abstract class UserRepository {
   Future<FirebaseUser> signInWIthGoogle();
 
-  Future<void> signInWithCredentials(String email, String password);
+  Future<void> signInWithCredentials({String email, String password});
 
   Future<void> signUp({String email, String password});
 
@@ -39,7 +39,7 @@ class FirebaseUserRepository implements UserRepository {
   }
 
   @override
-  Future<void> signInWithCredentials(String email, String password) {
+  Future<void> signInWithCredentials({String email, String password}) {
     return _firebaseAuth.signInWithEmailAndPassword(
         email: email, password: password);
   }

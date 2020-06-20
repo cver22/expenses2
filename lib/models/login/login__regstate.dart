@@ -1,4 +1,6 @@
-import 'package:expenses/models/login/login_status.dart';
+import 'package:expenses/blocs/register_bloc/bloc.dart';
+import 'package:expenses/models/login/login_or_register.dart';
+import 'package:expenses/models/login/login__reg_status.dart';
 import 'package:meta/meta.dart';
 
 // empty is the initial state of the LoginForm.
@@ -7,71 +9,107 @@ import 'package:meta/meta.dart';
 // success is the state of the LoginForm when a login attempt has succeeded.
 
 @immutable
-class LoginState {
+class LoginRegState {
   final LoginStatus loginStatus;
+  final LoginOrRegister loginOrRegister;
   final bool isEmailValid;
   final bool isPasswordValid;
 
 
   bool get isFormValid => isEmailValid && isPasswordValid;
 
-  LoginState({
+  LoginRegState({
     @required this.loginStatus,
+    @required this.loginOrRegister,
     @required this.isEmailValid,
     @required this.isPasswordValid,
   });
 
-  factory LoginState.initial() {
-    return LoginState(
+  factory LoginRegState.initial() {
+    return LoginRegState(
       loginStatus: LoginStatus.initial,
+      loginOrRegister:  LoginOrRegister.login,
       isEmailValid: true,
       isPasswordValid: true,
     );
   }
 
-  factory LoginState.submitting() {
-    return LoginState(
+  /*factory LoginRegState.submitting() {
+    return LoginRegState(
       loginStatus: LoginStatus.submitting,
       isEmailValid: true,
       isPasswordValid: true,
     );
-  }
+  }*/
 
-  factory LoginState.failure() {
-    return LoginState(
-      loginStatus: LoginStatus.failure,
-      isEmailValid: true,
-      isPasswordValid: true,
-    );
-  }
-
-  factory LoginState.success() {
-    return LoginState(
-      loginStatus: LoginStatus.success,
-      isEmailValid: true,
-      isPasswordValid: true,
-    );
-  }
-
-  LoginState updateCredentials({
-    bool isEmailValid,
-    bool isPasswordValid,
-  }) {
+  LoginRegState submitting() {
     return copyWith(
-      loginStatus: LoginStatus.updated,
+      loginStatus: LoginStatus.submitting,
+      loginOrRegister: this.loginOrRegister,
       isEmailValid: isEmailValid,
       isPasswordValid: isPasswordValid,
 
     );
   }
 
-  LoginState copyWith({
-    LoginStatus loginStatus,
+  /*factory LoginRegState.failure() {
+    return LoginRegState(
+      loginStatus: LoginStatus.failure,
+      isEmailValid: true,
+      isPasswordValid: true,
+    );
+  }*/
+
+  LoginRegState failure() {
+    return copyWith(
+      loginStatus: LoginStatus.failure,
+      loginOrRegister: this.loginOrRegister,
+      isEmailValid: isEmailValid,
+      isPasswordValid: isPasswordValid,
+
+    );
+  }
+
+  /*factory LoginRegState.success() {
+    return LoginRegState(
+      loginStatus: LoginStatus.success,
+      isEmailValid: true,
+      isPasswordValid: true,
+    );
+  }*/
+
+  LoginRegState success() {
+    return copyWith(
+      loginStatus: LoginStatus.success,
+      loginOrRegister: this.loginOrRegister,
+      isEmailValid: isEmailValid,
+      isPasswordValid: isPasswordValid,
+
+    );
+  }
+
+  LoginRegState updateCredentials({
     bool isEmailValid,
     bool isPasswordValid,
   }) {
-    return LoginState(
+    return copyWith(
+      loginStatus: LoginStatus.updated,
+      loginOrRegister: this.loginOrRegister,
+      isEmailValid: isEmailValid,
+      isPasswordValid: isPasswordValid,
+
+    );
+  }
+
+  LoginRegState copyWith({
+    LoginStatus loginStatus,
+    LoginOrRegister loginOrRegister,
+    bool isEmailValid,
+    bool isPasswordValid,
+  }) {
+    return LoginRegState(
       loginStatus: loginStatus ?? this.loginStatus,
+      loginOrRegister: loginOrRegister ?? this.loginOrRegister,
       isEmailValid: isEmailValid ?? this.isEmailValid,
       isPasswordValid: isPasswordValid ?? this.isPasswordValid,
     );

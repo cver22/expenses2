@@ -1,5 +1,7 @@
 enum RegisterStatus {
-  submitted,
-  emailChanged,
-  passwordChanged,
+  initial,
+  updated,
+  submitting,
+  success,
+  failure,
 }
