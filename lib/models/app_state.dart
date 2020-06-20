@@ -1,7 +1,7 @@
 
 import 'package:expenses/models/auth/auth_state.dart';
-import 'package:expenses/models/login/login__regstate.dart';
-import 'package:expenses/models/register/register_state.dart';
+import 'package:expenses/models/login/login_reg_state.dart';
+
 import 'package:meta/meta.dart';
 
 @immutable

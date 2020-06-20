@@ -1,4 +1,3 @@
-import 'package:expenses/blocs/register_bloc/bloc.dart';
 import 'package:expenses/models/login/login_or_register.dart';
 import 'package:expenses/models/login/login__reg_status.dart';
 import 'package:meta/meta.dart';
@@ -14,7 +13,6 @@ class LoginRegState {
   final LoginOrRegister loginOrRegister;
   final bool isEmailValid;
   final bool isPasswordValid;
-
 
   bool get isFormValid => isEmailValid && isPasswordValid;
 
@@ -34,14 +32,6 @@ class LoginRegState {
     );
   }
 
-  /*factory LoginRegState.submitting() {
-    return LoginRegState(
-      loginStatus: LoginStatus.submitting,
-      isEmailValid: true,
-      isPasswordValid: true,
-    );
-  }*/
-
   LoginRegState submitting() {
     return copyWith(
       loginStatus: LoginStatus.submitting,
@@ -52,14 +42,6 @@ class LoginRegState {
     );
   }
 
-  /*factory LoginRegState.failure() {
-    return LoginRegState(
-      loginStatus: LoginStatus.failure,
-      isEmailValid: true,
-      isPasswordValid: true,
-    );
-  }*/
-
   LoginRegState failure() {
     return copyWith(
       loginStatus: LoginStatus.failure,
@@ -69,14 +51,6 @@ class LoginRegState {
 
     );
   }
-
-  /*factory LoginRegState.success() {
-    return LoginRegState(
-      loginStatus: LoginStatus.success,
-      isEmailValid: true,
-      isPasswordValid: true,
-    );
-  }*/
 
   LoginRegState success() {
     return copyWith(

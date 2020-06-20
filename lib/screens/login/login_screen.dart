@@ -1,6 +1,6 @@
 import 'package:expenses/env.dart';
 import 'package:expenses/models/login/login__reg_status.dart';
-import 'package:expenses/models/login/login__regstate.dart';
+import 'package:expenses/models/login/login_reg_state.dart';
 import 'package:expenses/screens/login/login_form.dart';
 import 'package:expenses/store/connect_state.dart';
 import 'package:expenses/utils/utils.dart';
@@ -18,10 +18,9 @@ class _LoginScreenState extends State<LoginScreen> {
       where: notIdentical,
       map: (state) => state.loginRegState,
       builder: (state) {
-
-        if(state.loginStatus == LoginStatus.success){
+        if (state.loginStatus == LoginStatus.success) {
           Env.userFetcher.startApp();
-        }else{
+        } else {
           return Scaffold(
             appBar: AppBar(
               title: Text('Login'),
@@ -31,8 +30,6 @@ class _LoginScreenState extends State<LoginScreen> {
         }
 
         return Container();
-
-
       },
     );
   }

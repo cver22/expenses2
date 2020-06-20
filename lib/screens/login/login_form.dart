@@ -7,7 +7,7 @@ import 'package:expenses/store/actions/actions.dart';
 import 'package:expenses/store/connect_state.dart';
 import 'package:expenses/utils/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:expenses/models/login/login__regstate.dart';
+import 'package:expenses/models/login/login_reg_state.dart';
 import 'package:expenses/screens/login/create_account_button.dart';
 
 class LoginForm extends StatefulWidget {
