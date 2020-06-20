@@ -18,16 +18,21 @@ class _LoginScreenState extends State<LoginScreen> {
       where: notIdentical,
       map: (state) => state.loginRegState,
       builder: (state) {
-        if (state.loginStatus == LoginStatus.success) {
+
+        if(state.loginStatus == LoginStatus.success){
           Env.userFetcher.startApp();
-          Navigator.pop(context);
+        }else{
+          return Scaffold(
+            appBar: AppBar(
+              title: Text('Login'),
+            ),
+            body: LoginForm(),
+          );
         }
-        return Scaffold(
-          appBar: AppBar(
-            title: Text('Login'),
-          ),
-          body: LoginForm(),
-        );
+
+        return Container();
+
+
       },
     );
   }

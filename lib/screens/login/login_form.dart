@@ -16,7 +16,6 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
-
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -48,6 +47,10 @@ class _LoginFormState extends State<LoginForm> {
         builder: (state) {
           print('Login status: ${state.loginStatus}');
           print('LoginOrRegister: ${state.loginOrRegister}');
+          if (state.loginStatus == LoginStatus.success) {
+            Env.userFetcher.startApp();
+            Navigator.pop(context);
+          }
 
           /*if (loginState.loginStatus == LoginStatus.failure) {
               Scaffold.of(context)
@@ -88,8 +91,7 @@ class _LoginFormState extends State<LoginForm> {
                 children: <Widget>[
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 20.0),
-                    child:
-                    Image.asset('assets/flutter_logo.png', height: 200),
+                    child: Image.asset('assets/flutter_logo.png', height: 200),
                   ),
                   TextFormField(
                     controller: _emailController,
@@ -101,9 +103,7 @@ class _LoginFormState extends State<LoginForm> {
                     autovalidate: true,
                     autocorrect: false,
                     validator: (_) {
-                      return !state.isEmailValid
-                          ? 'Invalid Email'
-                          : null;
+                      return !state.isEmailValid ? 'Invalid Email' : null;
                     },
                   ),
                   TextFormField(
@@ -116,9 +116,7 @@ class _LoginFormState extends State<LoginForm> {
                     autovalidate: true,
                     autocorrect: false,
                     validator: (_) {
-                      return !state.isPasswordValid
-                          ? 'Invalid Password'
-                          : null;
+                      return !state.isPasswordValid ? 'Invalid Password' : null;
                     },
                   ),
                   Padding(
@@ -131,7 +129,10 @@ class _LoginFormState extends State<LoginForm> {
                               : null,
                           name: isLogin(state) ? 'Login' : 'Register',
                         ),
-                        GoogleLoginButton(enabled: isLogin(state), loginRegState: state,),
+                        GoogleLoginButton(
+                          enabled: isLogin(state),
+                          loginRegState: state,
+                        ),
                         CreateAccountButton(loginState: state),
                       ],
                     ),
@@ -142,7 +143,6 @@ class _LoginFormState extends State<LoginForm> {
           );
         });
   }
-
 
   void _onEmailChanged() {
     Env.store.dispatch(EmailValidation(_emailController.text));
@@ -160,19 +160,16 @@ class _LoginFormState extends State<LoginForm> {
   }
 
   void _onFormSubmitted(LoginRegState loginState, BuildContext context) {
-    if(isLogin(loginState)){
+    if (isLogin(loginState)) {
       Env.userFetcher.signInWithCredentials(
-        email: _emailController.text.toString().trim(),
-        password: _passwordController.text.toString(),
-      );
-    }else{
+          email: _emailController.text.toString().trim(),
+          password: _passwordController.text.toString(),
+          loginRegState: loginState);
+    } else {
       Env.userFetcher.registerWithCredentials(
-        email: _emailController.text.toString().trim(),
-        password: _passwordController.text.toString(),
-      );
+          email: _emailController.text.toString().trim(),
+          password: _passwordController.text.toString(),
+          loginRegState: loginState);
     }
-
-
   }
-
 }
