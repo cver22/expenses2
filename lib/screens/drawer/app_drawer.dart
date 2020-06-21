@@ -1,4 +1,4 @@
-import 'package:expenses/screens/account/account_page.dart';
+import 'package:expenses/screens/account/account_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -16,7 +16,7 @@ class AppDrawer extends StatelessWidget {
             ListView(
               shrinkWrap: true,
               children: <Widget>[
-                DrawerListTile(page: AccountPage(), name: 'Account'),
+                DrawerListTile(page: AccountScreen(), name: 'Account'),
               ],
             ),
           ],

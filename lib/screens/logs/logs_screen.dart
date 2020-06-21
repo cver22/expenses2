@@ -3,7 +3,7 @@ import 'package:expenses/env.dart';
 import 'package:flutter/material.dart';
 
 
-class LogsPage extends StatelessWidget {
+class LogsScreen extends StatelessWidget {
   //TODO LogsBloc _logsBloc; and how to dispose
 
   @override

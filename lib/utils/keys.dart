@@ -8,56 +8,31 @@ class ExpenseKeys {
 
   // Home Screens
   static final homeScreen = const Key('__homeScreen__');
-  static final addTodoFab = const Key('__addTodoFab__');
-  static final snackbar = const Key('__snackbar__');
-  static Key snackbarAction(String id) => Key('__snackbar_action_${id}__');
 
-  // Todos
-  static final todoList = const Key('__todoList__');
-  static final todosLoading = const Key('__todosLoading__');
-  static final todoItem = (String id) => Key('TodoItem__${id}');
-  static final todoItemCheckbox =
-      (String id) => Key('TodoItem__${id}__Checkbox');
-  static final todoItemTask = (String id) => Key('TodoItem__${id}__Task');
-  static final todoItemNote = (String id) => Key('TodoItem__${id}__Note');
+  static final splashScreen = const Key('__splashScreen__');
 
   // Tabs
-  static final tabs = const Key('__tabs__');
+  /*static final tabSelector = const Key('__tabSelector__');
   static final logsTab = const Key('__logsTab__');
-  static final entriesTab = const Key('__entriesTab__');
+  static final entriesTab = const Key('__entriesTab__');*/
 
-  // Extra Actions
-  static final extraActionsButton = const Key('__extraActionsButton__');
-  static final toggleAll = const Key('__markAllDone__');
-  static final clearCompleted = const Key('__clearCompleted__');
+  // App Drawer
+  static final appDrawer = const Key('__appDrawer__');
 
-  // Filters
-  static final filterButton = const Key('__filterButton__');
-  static final allFilter = const Key('__allFilter__');
-  static final activeFilter = const Key('__activeFilter__');
-  static final completedFilter = const Key('__completedFilter__');
+  // Common Widgets
+  static final emptyContent = const Key('__emptyContent__');
 
-  // Stats
-  static final statsCounter = const Key('__statsCounter__');
-  static final statsLoading = const Key('__statsLoading__');
-  static final statsNumActive = const Key('__statsActiveItems__');
-  static final statsNumCompleted = const Key('__statsCompletedItems__');
+  // Login Screens
+  static final loginScreen = const Key('__loginScreen__');
+  static final loginForm = const Key('__loginForm__');
+  static final loginButton = const Key('__loginButton__');
+  static final googleLoginButton = const Key('__googleLoginButton');
+  static final createAccountButton = const Key('createAccountButton');
 
-  // Details Screen
-  static final editTodoFab = const Key('__editTodoFab__');
-  static final deleteTodoButton = const Key('__deleteTodoFab__');
-  static final todoDetailsScreen = const Key('__todoDetailsScreen__');
-  static final detailsTodoItemCheckbox = Key('DetailsTodo__Checkbox');
-  static final detailsTodoItemTask = Key('DetailsTodo__Task');
-  static final detailsTodoItemNote = Key('DetailsTodo__Note');
+  // Entries Screens
+  static final entriesScreen = const Key('__entriesScreen__');
 
-  // Add Screen
-  static final addTodoScreen = const Key('__addTodoScreen__');
-  static final saveNewTodo = const Key('__saveNewTodo__');
-  static final taskField = const Key('__taskField__');
-  static final noteField = const Key('__noteField__');
 
-  // Edit Screen
-  static final editTodoScreen = const Key('__editTodoScreen__');
-  static final saveTodoFab = const Key('__saveTodoFab__');
+  // Logs Screen
+  static final logsScreen = const Key('__logsScreen__');
 }

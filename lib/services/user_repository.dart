@@ -6,7 +6,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 //TODO implement error checking
 
 abstract class UserRepository {
-  Future<FirebaseUser> signInWIthGoogle();
+  Future<FirebaseUser> signInWithGoogle();
 
   Future<void> signInWithCredentials({String email, String password});
 
@@ -28,7 +28,7 @@ class FirebaseUserRepository implements UserRepository {
         _googleSignIn = googleSignIn ?? GoogleSignIn();
 
   @override
-  Future<FirebaseUser> signInWIthGoogle() async {
+  Future<FirebaseUser> signInWithGoogle() async {
     final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
     final GoogleSignInAuthentication googleAuth =
         await googleUser.authentication;

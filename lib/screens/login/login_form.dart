@@ -47,10 +47,6 @@ class _LoginFormState extends State<LoginForm> {
         builder: (state) {
           print('Login status: ${state.loginStatus}');
           print('LoginOrRegister: ${state.loginOrRegister}');
-          if (state.loginStatus == LoginStatus.success) {
-            Env.userFetcher.startApp();
-            Navigator.pop(context);
-          }
 
           /*if (loginState.loginStatus == LoginStatus.failure) {
               Scaffold.of(context)
@@ -102,6 +98,7 @@ class _LoginFormState extends State<LoginForm> {
                     keyboardType: TextInputType.emailAddress,
                     autovalidate: true,
                     autocorrect: false,
+                    //TODO need email validation
                     validator: (_) {
                       return !state.isEmailValid ? 'Invalid Email' : null;
                     },
@@ -115,8 +112,9 @@ class _LoginFormState extends State<LoginForm> {
                     obscureText: true,
                     autovalidate: true,
                     autocorrect: false,
+                    //TODO delay password validation
                     validator: (_) {
-                      return !state.isPasswordValid ? 'Invalid Password' : null;
+                      return !state.isPasswordValid ? 'Minimum 10 characters' : null;
                     },
                   ),
                   Padding(

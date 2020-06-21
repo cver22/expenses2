@@ -41,27 +41,12 @@ class UserFetcher {
   Future<void> signOut() async {
     _store.dispatch(SignOutState());
     await _userRepository.signOut();
-
-  }
-
-  Future<void> signInWithCredentials({String email, String password, LoginRegState loginRegState}) async {
-    _store.dispatch(UpdateLoginRegState(loginRegState: loginRegState.submitting()));
-
-    try {
-
-      await _userRepository.signInWithCredentials(email: email, password: password);
-      _store.dispatch(UpdateLoginRegState(loginRegState: loginRegState.success()));
-
-    } catch (e) {
-      print(e.toString());
-      _store.dispatch(UpdateLoginRegState(loginRegState: loginRegState.failure()));
-    }
   }
 
   Future<void> signInWithGoogle(LoginRegState loginRegState) async {
     _store.dispatch(UpdateLoginRegState(loginRegState: loginRegState.submitting()));
     try {
-      await _userRepository.signInWIthGoogle();
+      await _userRepository.signInWithGoogle();
       User user = await _userRepository.getUser();
       print('google login: ${user.toString()}');
       _store.dispatch(UpdateLoginRegState(loginRegState: loginRegState.success()));
@@ -72,18 +57,36 @@ class UserFetcher {
     }
   }
 
-  Future<void> registerWithCredentials({String email, String password, LoginRegState loginRegState}) async {
-    _store.dispatch(UpdateLoginRegState(loginRegState: loginRegState.submitting()));
+  Future<void> signInWithCredentials(
+      {String email, String password, LoginRegState loginRegState}) async {
+    _store.dispatch(
+        UpdateLoginRegState(loginRegState: loginRegState.submitting()));
+
     try {
-
-      await _userRepository.signUp(email: email, password: password);
-      _store.dispatch(UpdateLoginRegState(loginRegState: loginRegState.success()));
-
+      await _userRepository.signInWithCredentials(
+          email: email, password: password);
+      _store.dispatch(
+          UpdateLoginRegState(loginRegState: loginRegState.success()));
     } catch (e) {
       print(e.toString());
-      _store.dispatch(UpdateLoginRegState(loginRegState: loginRegState.failure()));
+      _store.dispatch(
+          UpdateLoginRegState(loginRegState: loginRegState.failure()));
     }
+  }
 
+  Future<void> registerWithCredentials(
+      {String email, String password, LoginRegState loginRegState}) async {
+    _store.dispatch(
+        UpdateLoginRegState(loginRegState: loginRegState.submitting()));
+    try {
+      await _userRepository.signUp(email: email, password: password);
+      _store.dispatch(
+          UpdateLoginRegState(loginRegState: loginRegState.success()));
+    } catch (e) {
+      print(e.toString());
+      _store.dispatch(
+          UpdateLoginRegState(loginRegState: loginRegState.failure()));
+    }
   }
 
 //TODO implement loading of logs and entries from firestore

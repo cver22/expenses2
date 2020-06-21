@@ -2,7 +2,7 @@ import 'package:expenses/env.dart';
 import 'file:///D:/version-control/flutter/expenses/lib/models/user.dart';
 import 'package:flutter/material.dart';
 
-class AccountPage extends StatelessWidget {
+class AccountScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     User user = Env.store.state.authState.user.value;

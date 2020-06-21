@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 //TODO show the entries
 
-class EntriesPage extends StatelessWidget {
+class EntriesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // ignore: missing_return
